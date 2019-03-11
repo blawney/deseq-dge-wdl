@@ -1,0 +1,8 @@
+{
+  "Deseq2Dge.raw_count_matrix": "File",
+  "Deseq2Dge.sample_annotations": "File",
+  "Deseq2Dge.contrast_name": "String",
+  "Deseq2Dge.experimental_group": "String",
+  "Deseq2Dge.base_group": "String"
+}
+

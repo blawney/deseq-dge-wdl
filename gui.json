@@ -1,0 +1,56 @@
+{
+	"input_elements": [
+		{
+			"target": {
+				"target_ids": ["Deseq2Dge.raw_count_matrix"],
+				"name": "raw_count_matrix_input",
+				"handler": "input_mapping.py"
+			},
+			"display_element": {
+				"type": "file_chooser",
+                "regex_filter": ".*",
+				"label": "Raw count table:",
+				"choose_multiple": false,
+				"description": "Choose an input count matrix.  Genes are in rows and samples are in columns.  "
+			}	
+        },
+		{
+			"target": {
+				"target_ids": ["Deseq2Dge.sample_annotations"],
+				"name": "annotations_input",
+				"handler": "input_mapping.py"
+			},
+			"display_element": {
+				"type": "file_chooser",
+                "regex_filter": ".*",
+				"label": "Sample annotations:",
+				"choose_multiple": false,
+				"description": "Choose a sample annotation file.  This should have two columns, separated by a \"tab\" (tab-delimited).  The first has the sample names, which NEED to exactly match the columns of your count matrix.  The second column tells us which group the sample belongs to.  The names of the groups NEED to match the values you enter below for the base and experimental groups.  There should NOT be a column header."
+			}	
+		},
+		{
+			"target": "Deseq2Dge.contrast_name",
+			"display_element": {
+				"type": "text",
+				"label": "Contrast name:",
+				"description": "Name the contrast you are performing.  For example, \"wildtype_vs_knockout\"."
+			}	
+        },
+		{
+			"target": "Deseq2Dge.base_group",
+			"display_element": {
+				"type": "text",
+				"label": "Base group:",
+				"description": "Name the group which represents your \"base\", \"untreated\", or similar contrast you are performing.  For example, \"wildtype_vs_knockout\"."
+			}	
+        },
+        {
+			"target": "Deseq2Dge.experimental_group",
+			"display_element": {
+				"type": "text",
+				"label": "Contrast name:",
+				"description": "Name the group which represents your \"experimental\" condition."
+			}	
+        }
+	]
+}
