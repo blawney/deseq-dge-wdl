@@ -18,6 +18,7 @@ workflow Deseq2Dge {
     output {
         File dge_table = dge.dge_table
         File normalized_counts = dge.nc_table
+        File figures_zip = dge.figures_zip
     }
 
     meta {
@@ -57,13 +58,13 @@ task run_differential_expression {
             -c ${normalized_counts} \
             -s ${sample_annotations} \
             -o ${output_figures_dir}
-        zip ${output_figures_zip} ${output_figures_dir}
+        zip -r ${output_figures_zip} ${output_figures_dir}
     >>>
 
     output {
         File dge_table = "${output_deseq2}"
         File nc_table = "${normalized_counts}"
-        File figure_zip = "${output_figures_zip}"
+        File figures_zip = "${output_figures_zip}"
     }  
 
     runtime {
