@@ -16,12 +16,14 @@ RUN apt-get update && \
 # Install DESeq2 and dependencies:
 RUN R -e "source('http://bioconductor.org/biocLite.R'); biocLite('RCurl'); biocLite('XML'); biocLite('DESeq2')"
 
-# Install python dependencies:
-RUN pip3 install -r requirements.txt
-
 # Install all software under /opt/software:
 RUN mkdir -p /opt/software 
+
 ADD deseq2.R /opt/software/
 ADD make_plots.py /opt/software/
+ADD requirements.txt /opt/software/
+
+# Install python dependencies:
+RUN pip3 install -r /opt/software/requirements.txt
 
 ENTRYPOINT ["/bin/bash"]
