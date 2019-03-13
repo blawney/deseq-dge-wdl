@@ -3,6 +3,8 @@
   "Deseq2Dge.sample_annotations": "File",
   "Deseq2Dge.contrast_name": "String",
   "Deseq2Dge.experimental_group": "String",
-  "Deseq2Dge.base_group": "String"
+  "Deseq2Dge.base_group": "String",
+  "Deseq2Dge.git_repo_url": "String",
+  "Deseq2Dge.git_commit_hash": "String"
 }
 

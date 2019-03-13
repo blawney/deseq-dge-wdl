@@ -36,7 +36,7 @@ dds <- DESeqDataSetFromMatrix(countData = count_data,
 							  design = ~condition)
 
 dds <- DESeq(dds)
-res <- results(dds, cooksCutoff=F)
+res <- results(dds, cooksCutoff=F, contrast=c("condition", CONDITION_B, CONDITION_A))
 original_colnames = colnames(res)
 n = length(original_colnames)
 baseMeanA = rowMeans(counts(dds,normalized=TRUE)[,dds$condition == CONDITION_A]) 

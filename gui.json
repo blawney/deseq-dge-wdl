@@ -51,6 +51,26 @@
 				"label": "Contrast name:",
 				"description": "Name the group which represents your \"experimental\" condition."
 			}	
-        }
+		},
+		{
+			"target": "Deseq2Dge.git_repo_url",
+			"display_element": {
+				"type": "dynamic_hidden",
+				"handler": "add_git_repo_url.py",
+				"context_args": {
+					"variable_name": "git_repo_url"
+				}
+			}
+		},
+		{
+			"target": "Deseq2Dge.git_commit_hash",
+			"display_element": {
+				"type": "dynamic_hidden",
+				"handler": "add_git_hash.py",
+				"context_args": {
+					"variable_name": "git_commit_hash"
+				}
+			}
+		}
 	]
 }

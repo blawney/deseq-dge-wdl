@@ -11,7 +11,9 @@ RUN apt-get update && \
     libxml2-dev \
     python3-dev \
     python3-pip \
-    r-base
+    r-base \
+    pandoc
+
 
 # Install DESeq2 and dependencies:
 RUN R -e "source('http://bioconductor.org/biocLite.R'); biocLite('RCurl'); biocLite('XML'); biocLite('DESeq2')"
@@ -25,5 +27,11 @@ ADD requirements.txt /opt/software/
 
 # Install python dependencies:
 RUN pip3 install -r /opt/software/requirements.txt
+
+# Add the report template and script:
+RUN mkdir /opt/report
+ADD report.md /opt/report/
+ADD report.css /opt/report/
+ADD generate_report.py /opt/report/
 
 ENTRYPOINT ["/bin/bash"]

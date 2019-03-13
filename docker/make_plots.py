@@ -187,7 +187,7 @@ def interactive_volcano(dge_df, padj_threshold, output_dir):
     )
     p = figure(plot_width=1500, 
         plot_height=800, 
-        tools=[hover, 'pan', 'wheel_zoom','box_zoom','reset'], 
+        tools=[hover, 'pan', 'wheel_zoom','box_zoom','reset', 'save'], 
         title='Differentially-expressed genes',
         x_axis_label='log2(fold-change)', y_axis_label='-log10(Adjusted p-value)')
 
