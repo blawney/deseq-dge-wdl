@@ -40,6 +40,8 @@ task run_differential_expression {
     Int disk_size = 10
     String output_deseq2 = "deseq2_output.tsv"
     String normalized_counts = "normalized_read_counts.tsv"
+    String output_figures_zip = "figures.zip"
+    String output_figures_dir = "figures"
 
     command <<<
         Rscript /opt/software/deseq2.R \
@@ -49,11 +51,19 @@ task run_differential_expression {
             ${experimental_group} \
             ${output_deseq2} \
             ${normalized_counts}
+        mkdir ${output_figures_dir}
+        python3 make_plots.py \
+            -i ${output_deseq2} \
+            -c ${normalized_counts} \
+            -s ${sample_annotations} \
+            -o ${output_figures_dir}
+        zip ${output_figures_zip} ${output_figures_dir}
     >>>
 
     output {
         File dge_table = "${output_deseq2}"
         File nc_table = "${normalized_counts}"
+        File figure_zip = "${output_figures_zip}"
     }  
 
     runtime {
