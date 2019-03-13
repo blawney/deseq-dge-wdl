@@ -215,6 +215,6 @@ if __name__ == '__main__':
     #make_volcano_plot(dg_table, args['padj_threshold'], args['output_dir'])
     interactive_volcano(
         dg_table, 
-        args['padj_threshold'], ,
+        args['padj_threshold'],
         args['output_dir']
     )
