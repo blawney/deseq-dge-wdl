@@ -42,6 +42,7 @@ Parsed sample and condition table:
 #### Outputs:
 
 **Differential expression results**
+
 The differential expression results are summarized in a table in the file named `{{deseq2_output_filename}}`.  It is saved in a tab-delimited text format.  Each row contains information about a particular gene and the results of the statistical test performed.  Note that we have added a couple of columns to the standard DESeq2 output.
 
 Although the particulars of DESeq2 are different, it can helpful to recall the Student's t-test when thinking about interpretation of the columns.  The parameter estimates and tests are different, but the ideas are very similar.  We are testing the null hypothesis that there is *no change* in the expression of a particular gene between the two conditions.
@@ -59,9 +60,11 @@ The columns and brief interpretations are:
 - **padj**: The "adjusted" p-value, which adjusts for the large number of statistical tests performed.  This addresses issues encountered in the "multiple-testing problem".  Corrections are based on the Benjamini-Hochberg procedure.
 
 **Normalized expression table**
+
 A table of normalized read-counts (suitable for using when plotting expression) is provided in `{{normalized_counts_filename}}`.  It is saved in a tab-delimited text file.  
 
 **Figures**
+
 Basic figures are contained in the zip archive named `{{output_figures_zip_name}}`.  We provide scatter plots of the top differentially expressed genes (if any) for quick reference.  Additionally, we provide a dynamic volcano plot which shows the log2 fold-change and adjusted p-value on a single plot.  This may be opened in any modern web browser.
 
 
