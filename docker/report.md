@@ -18,7 +18,7 @@ This allows us to run the *exact* same pipeline at any later time, discarding an
 
 Integer read-count tables derived from RNA-seq alignments were analyzed for differential expression using Bioconductor's DESeq2 software.  Briefly, this software performs normalization to control for sequencing depth and subsequently performs differential expression testing based on a negative-binomial model.  For further details on both of these steps, please consult the documentation and publications for DESeq2 [1] and its older iteration, DESeq [2].
 
-The R `sessionInfo()` produced the following output:
+The R `sessionInfo()` produced the following output.  We print here so that the same combination of packages/software may be recreated, if necessary.
 
 ```
 {{session_info}}
@@ -28,6 +28,7 @@ The R `sessionInfo()` produced the following output:
 The inputs to the workflow were given as:
 
 Input count matrix: `{{input_count_matrix}}`
+
 Sample annotations file: `{{annotations_file}}`
 
 Parsed sample and condition table:

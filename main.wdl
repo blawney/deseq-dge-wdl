@@ -9,7 +9,7 @@ workflow Deseq2Dge {
     String git_commit_hash
 
     String output_deseq2 = "deseq2_output.tsv"
-    String normalized_counts = "normalized_read_counts.tsv"
+    String normalized_counts_filename = "normalized_read_counts.tsv"
     String output_figures_zip = "figures.zip"
 
     call run_differential_expression as dge {
@@ -20,18 +20,18 @@ workflow Deseq2Dge {
             base_group = base_group,
             experimental_group = experimental_group,
             output_deseq2 = output_deseq2,
-            normalized_counts = normalized_counts,
+            normalized_counts = normalized_counts_filename,
             output_figures_zip = output_figures_zip
     }
 
-    call generate_report as report {
+    call generate_report {
         input:
             git_repo_url = git_repo_url,
             git_commit_hash = git_commit_hash,
             input_matrix = raw_count_matrix,
             annotations = sample_annotations,
             deseq_output_filename = output_deseq2,
-            normalized_counts_filename = normalized_counts,
+            normalized_counts_filename = normalized_counts_filename,
             figures_zip_filename = output_figures_zip
     }
 
@@ -39,7 +39,7 @@ workflow Deseq2Dge {
         File dge_table = dge.dge_table
         File normalized_counts = dge.nc_table
         File figures_zip = dge.figures_zip
-        File report = report.report
+        File report = generate_report.report
     }
 
     meta {
@@ -53,7 +53,7 @@ workflow Deseq2Dge {
 
 
 task run_differential_expression {
-    
+
     File sample_annotations
     File raw_count_matrix
     String contrast_name

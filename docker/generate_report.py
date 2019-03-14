@@ -106,6 +106,8 @@ if __name__ == '__main__':
     # make the context dictionary
     context = {}
     context.update(arg_dict)
+    context[INPUT_MATRIX] = os.path.basename(context[INPUT_MATRIX])
+    context[ANNOTATIONS] = os.path.basename(context[ANNOTATIONS])
     context.update({'session_info': session_info})
     context.update({'annotation_objs': annotations_object_list})
 
